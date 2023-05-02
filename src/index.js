@@ -1,37 +1,24 @@
 import readlineSync from 'readline-sync';
 import askName from './cli.js';
 
-const getRandomNumber = () => Math.floor(Math.random(100 - 1) * 100 + 1);
+export const getRandomNumber = () => Math.floor(Math.random(100 - 1) * 100 + 1);
 
-const IsEven = (number) => number % 2 === 0;
+const letsPlay = (gameDescription, gameData) => {
+  const userName = askName();
+  const askQuestion = (number) => readlineSync.question(`Question: ${number} `);
+  gameDescription();
 
-function checkAnswer(answer, count, number, name) {
-  if (count === 3) {
-    return console.log(`Congratulations, ${name}!`);
+  const rounds = 3;
+  for (let i = 0; i < rounds; i += 1) {
+    const [question, correctAnswer] = gameData();
+    const userAnswer = askQuestion(question);
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+    } else {
+      return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". Let's try again, ${userName}!`);
+    }
   }
-
-  const rightAnswer = IsEven(number) ? 'yes' : 'no';
-  if (answer === rightAnswer) {
-    return console.log('Correct!');
-  }
-
-  return console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}". Let's try again, ${name}!`);
-}
-
-const askQuestion = (number) => readlineSync.question(`Question: ${number} `);
-
-const name = askName();
-
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-let count = 1;
-const letsPlay = () => {
-  const number = getRandomNumber();
-  const answer = askQuestion(number);
-  checkAnswer(answer, count, number, name);
-  count += 1;
-  if (count < 4) {
-    letsPlay();
-  }
+  return console.log(`Congratulations, ${userName}`);
 };
 
 export default letsPlay;
