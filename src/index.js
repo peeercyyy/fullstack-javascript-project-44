@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import askName from '../src/cli.js';
+import askName from './cli.js';
 
 const getRandomNumber = () => Math.floor(Math.random(100 - 1) * 100 + 1);
 
@@ -7,19 +7,15 @@ const IsEven = (number) => number % 2 === 0;
 
 function checkAnswer(answer, count, number, name) {
   if (count === 3) {
-    console.log(`Congratulations, ${name}!`);
-    return;
+    return console.log(`Congratulations, ${name}!`);
   }
 
   const rightAnswer = IsEven(number) ? 'yes' : 'no';
   if (answer === rightAnswer) {
-    count += 1;
-    console.log('Correct!');
-    return count;
+    return console.log('Correct!');
   }
 
-  console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}". Let's try again, ${name}!`);
-  return 4;
+  return console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}". Let's try again, ${name}!`);
 }
 
 const askQuestion = (number) => readlineSync.question(`Question: ${number} `);
@@ -31,7 +27,8 @@ let count = 1;
 const letsPlay = () => {
   const number = getRandomNumber();
   const answer = askQuestion(number);
-  count = checkAnswer(answer, count, number, name);
+  checkAnswer(answer, count, number, name);
+  count += 1;
   if (count < 4) {
     letsPlay();
   }
