@@ -1,11 +1,14 @@
 import readlineSync from 'readline-sync';
 import askName from './cli.js';
 
-export const getRandomNumber = () => Math.floor(Math.random(100 - 1) * 100 + 1);
+export const getRandomNumber = (min, max) => Math.floor(Math.random(max - min) * max + min);
 
 const letsPlay = (gameDescription, gameData) => {
   const userName = askName();
-  const askQuestion = (number) => readlineSync.question(`Question: ${number} `);
+  const askQuestion = (number) => {
+    console.log(`Question: ${number}`);
+    return readlineSync.question('Your answer: ');
+  };
   gameDescription();
 
   const rounds = 3;
@@ -15,10 +18,9 @@ const letsPlay = (gameDescription, gameData) => {
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
     } else {
-      return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". Let's try again, ${userName}!`);
+      return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}!`);
     }
   }
   return console.log(`Congratulations, ${userName}`);
 };
-
 export default letsPlay;
