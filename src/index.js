@@ -21,6 +21,6 @@ const letsPlay = (gameDescription, gameData) => {
       return console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${userName}!`);
     }
   }
-  return console.log(`Congratulations, ${userName}`);
+  return console.log(`Congratulations, ${userName}!`);
 };
 export default letsPlay;
