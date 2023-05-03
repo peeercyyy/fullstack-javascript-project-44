@@ -8,3 +8,6 @@
 
 **Пример игры "brain-calc"**
 [![asciicast](https://asciinema.org/a/yyEVI5fWC7yEx9pHNSrErXvWk.svg)](https://asciinema.org/a/yyEVI5fWC7yEx9pHNSrErXvWk)
+
+**Пример игры "brain-gcd"**
+[![asciicast](https://asciinema.org/a/oLOk3MR8H8bjReXe0TOWXHQA0.svg)](https://asciinema.org/a/oLOk3MR8H8bjReXe0TOWXHQA0)
