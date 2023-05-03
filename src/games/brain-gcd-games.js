@@ -1,6 +1,6 @@
 import letsPlay, { getRandomNumber } from '../index.js';
 
-const gameDescription = () => console.log('Find the gratest common divisor of given numbers.');
+const gameDescription = () => console.log('Find the greatest common divisor of given numbers.');
 
 const gcd = (num1, num2) => {
   if (!num2) {
